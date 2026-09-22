@@ -1,7 +1,7 @@
 /*
 Q: To write or identify letters written in upeercase and lowercase input given by user
 and print what letter is uppercsse & lowercase & convert all to uppercase
- leave in vis-a-vis situation
+leave in vis-a-vis situation
 */
 
 # include <stdio.h>
@@ -30,14 +30,5 @@ int main()
     printf("\n\nTotal lower case is %d and upper case is %d",lower,upper);
     printf("\n\nyour paragraph in uppercase is as follows -:\n");
     printf("%s",hllo);
-    
-     
-
-
-
-
-
-
-
     return 0;
 }
