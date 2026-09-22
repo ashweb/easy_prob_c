@@ -5,7 +5,7 @@ leave in vis-a-vis situation
 */
 
 # include <stdio.h>
-//E==
+
 char hllo[500];
 int upper=0,lower=0;
 int main()
