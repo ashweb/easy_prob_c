@@ -61,7 +61,7 @@ printf("\nSECOND LARGEST NUMBER %d",seclarg);
 
 
 
-printf("\n\n\n\n\t-------ALTERNATIVELY DOING VIA SORTING-------\t\n");
+printf("\n\n\n\n\t--------ALTERNATIVELY DOING VIA SORTING---------\t\n");
 
 
 
