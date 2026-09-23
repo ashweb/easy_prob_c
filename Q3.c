@@ -21,9 +21,8 @@ Example: If your array is [12, 35, 1, 10, 34, 1],
         printf("%d, ",n[z]);
     }
     printf("\b\b ]");
-    //refer**
     
-    }
+ }
 
 
 
@@ -61,7 +60,7 @@ printf("\nSECOND LARGEST NUMBER %d",seclarg);
 
 
 
-printf("\n\n\n\n\t--------ALTERNATIVELY DOING VIA SORTING---------\t\n");
+printf("\n\n\n\n\t-------ALTERNATIVELY DOING VIA SORTING-------\t\n");
 
 
 
