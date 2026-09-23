@@ -21,7 +21,6 @@ Example: If your array is [12, 35, 1, 10, 34, 1],
         printf("%d, ",n[z]);
     }
     printf("\b\b ]");
-    
  }
 
 
