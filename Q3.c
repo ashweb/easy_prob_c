@@ -6,91 +6,55 @@ Example: If your array is [12, 35, 1, 10, 34, 1],
  the largest is 35 and the second largest is 34.
  */
 
- #include <stdio.h>
- void swap (int* x,int* y)
- {
-    int temp = *x;
-    *x = *y;
-    *y = temp;
- }
- void printarr(int m, int *n)
- {
-    printf("[ ");
-    for(int z=0; z< m; z++)
-    {
-        printf("%d, ",n[z]);
-    }
-    printf("\b\b ]");
- }
+ #include<stdio.h>
 
 
 
 
-int size, arr[50],larg,seclarg,count=0,temp,k;
+int size,arr[50],larg,seclarg;
 int main()
 {
-printf("Enter your array size ");
+    here :
+printf("\nENTER SIZEOF ARRAY ");
 scanf("%d",&size);
-printf("Enter your array\n");
-for(int i=0;i<size ;i++)
+if(size <2)
 {
-scanf("%d",&arr[i]);
+    printf("\\\\ENTER VALID SIZE\\\\");
+    goto here;
 }
-larg =0;
-for(int j=0;j<size;j++)
+printf("ENTER POSITIVE ARRAY ELEMENTS\n");
+for(int i = 0; i<size;i++)
 {
-    if(arr[j]>larg)
+    scanf("%d",&arr[i]);
+}
+larg = 0;
+seclarg = 0; 
+for(int y = 0; y<size;y++)
+{
+    if(arr[y]>larg)
     {
         seclarg = larg;
-        larg = arr[j];
-        
+        larg = arr[y];
     }
-    else if(arr[j]>seclarg)
+    else if(arr[y]>seclarg)
     {
-        seclarg = arr[j];
+        seclarg = arr[y];
     }
 }
-printf("\nLARGEST NUMBER %d",larg);
-if(seclarg != 0)
+if(seclarg == larg)
 {
-printf("\nSECOND LARGEST NUMBER %d",seclarg);
+    printf("\nKINDLY GIVE DISTINCTIVE ARRAYS");
+    return 1;
 }
 
+printf("\nLARGEST NUMBER IS %d",larg);
+printf("\nSECOND LARGEST NUMBER IS %d",seclarg);
 
-
-
-printf("\n\n\n\n\t-------ALTERNATIVELY DOING VIA SORTING-------\t\n");
-
-
-
-
-
-printf("\n\n");
-for(int u=0;u<size;u++)
-{
-for(int k=0;k<size-1;k++)
-{
-  
     
-    if(arr[k]<arr[k+1])
-    {
-        swap(&arr[k],&arr[k+1]);
-       
-    }
-
-}
-}
-printarr(size,arr);
-printf("\nLARGEST NUMBER %d\n",arr[0]);
-printf("SECOND LARGEST NUMBER %d",arr[1]);
-
-
-
-
 
 
 
 
 
     return 0;
- }
+}
