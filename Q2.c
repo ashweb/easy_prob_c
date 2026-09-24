@@ -9,40 +9,46 @@ wrap around to the front, resulting in [4, 5, 1, 2, 3].
 
 */
 
-#include <stdio.h>
+# include<stdio.h>
+
+
 
 void printer(int x,int *y)
 {
-printf("[ ");
-for(int h=0; h< x ; h++)
-{
-printf("%d, ",y[h]);
+    printf("[ ");
+    for(int k=0;k<x;k++)
+    {
+        printf("%d ,",y[k]);
+    }
+    printf("\b\b ]");
 }
-printf("\b\b ]");
-}
-
-int ogarr[50],arr,target,temparr[50];
 
 
+int size,arr[50],tmparr[50],k,num=0;
 int main()
 {
-    printf("Enter your number of array elements ");
-    scanf("%d",&arr);
-    printf("Enter your array elements\n");
-    for(int i=0;i<arr;i++)
+    printf("ENTER NUMBER OF ARRAY ELEMENTS ");
+    scanf("%d",&size);
+    printf("ENTER ARRAY ELEMENTS\n");
+    for(int p = 0; p<size;p++)
     {
-            scanf("%d",&ogarr[i]);
+    scanf("%d",&arr[p]);
+    }   
+    printf("ENTER ROTATED ELEMENTS ");
+    scanf("%d",&k);
+
+    for(int y = size-k; y<size ; y++)
+    {
+        tmparr[num]=arr[y];
+        num++;
     }
-    printf("Enter your swap target ");
-    scanf("%d",&target);
+    for(int l=0;l<size-k;l++)
+    {
+        tmparr[num] = arr[l];
+        num++;
+    }
+
+    printer(num,tmparr);
     
-    for(int k = 0; k < arr ; k++)
-    {
-           temparr[(k+target)%arr] = ogarr[k];
-    }
-int count1=0;
-    printer(arr,temparr);
-
-
-    return 0;
+return 0;
 }
