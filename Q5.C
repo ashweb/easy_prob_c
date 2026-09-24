@@ -48,11 +48,5 @@ while(left < right)
 }
 printf("\n\n------AFTER SWAP ARRAY IS-----\n\n");
 printarr(size, arr);
-
-
-
-
-
-
     return 0;
 }
