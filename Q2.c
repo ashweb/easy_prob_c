@@ -49,6 +49,5 @@ int main()
     }
 
     printer(num,tmparr);
-    
 return 0;
 }
