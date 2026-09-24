@@ -19,7 +19,7 @@ printf("\nENTER SIZEOF ARRAY ");
 scanf("%d",&size);
 if(size <2)
 {
-    printf("\\\\ENTER VALID SIZE\\\\");
+    printf("----ENTER VALID SIZE------");
     goto here;
 }
 printf("ENTER POSITIVE ARRAY ELEMENTS\n");
