@@ -56,28 +56,28 @@ for(int i =0; i<vec.size();i++)
 }
 */
     cout<<"\n-----MOST OPTIMISED METHOD - DUTCH NATIONAL FLAG ALGORITHM(DNF) -O(n)----\n";
-int n = vec.size();
-    int low =0,mid=0,high = n-1;
+ int mid=0,low=0,high = vec.size()-1;
+    
     while(mid<=high)
         {
             if(vec.at(mid)==0)
             {
-                swap(vec.at(low),vec.at(mid));
-                mid++;
-                low++;
-            }
+               swap(vec.at(mid),vec.at(low));
+                low++;mid++;
+            }   
             else if(vec.at(mid)==1)
             {
                 mid++;
             }
-            else 
+            else
+
             {
-                swap(vec.at(high),vec.at(mid));
+                swap(vec.at(mid),vec.at(high));
                 high--;
             }
         }
-    for(int i =0; i<vec.size();i++)
-{
+    for(int i =0;i<vec.size();i++)
+        {
     cout<<vec.at(i)<<" ";
-}
+        }
 }
