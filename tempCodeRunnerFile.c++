@@ -1,13 +1,17 @@
-
 /*
 The Problem:
-Write a C program that takes an array of integers (size entered by the user)
- and finds both the maximum (largest) and minimum (smallest) values in that array.
+Write a C program that takes an array of integers (size entered by the user) 
+and checks whether the array is a palindrome 
+If it's a palindrome, print "Palindrome".
+If it breaks symmetry anywhere, print "Not a Palindrome".
 
-Print out both the maximum and minimum numbers found.
+Example 1:
+Array: [1, 2, 3, 2, 1]
+Expected Output: Palindrome
 */
 #include <iostream>
 #include <vector>
+
 using namespace std;
 vector<int>vec;
 int num;
@@ -15,31 +19,30 @@ int main()
 {
    cout<<"ENTER YOUR ARRAY SIZE ";
    cin>>num;
-   if(num<2)
-   {
-      cout<<"GIVE NUMBER MORE THAN 1";
-      return 1;
-   }
-   cout<<"ENTER YOUR ARRAY HERE\n";
+   cout<<"ENTER YOUR ARRAY\n";
    for(int i=0;i<num;i++)
    {
       int x;
       cin>>x;
       vec.push_back(x);
    }
-   int larg=0;
-   int min=vec[0];
-for(int i=0;i<num;i++)
+   int st=0;
+   int end=num-1;
+   int count=0;
+   while(st<end)//dont put equals else count wont be equal if num is odd
    {
-      if(vec[i]>=larg)
+      if(vec[st]==vec[end])
       {
-         larg = vec[i];
+         count++;
       }
-      if(vec[i]<=min)
-      {
-         min = vec[i];
-      }
+      st++;end--;
    }
-   cout<<"LARGEST : "<<larg<<"\nMINIMUM : "<<min;
-
+   if(count == (num/2) )
+   {
+      cout<<"YOUR ARRAY IS A PALINDROME";
+   }
+   else
+   {
+      cout<<"ARRAY IS NOT A PALINDROME";
+   }
 }
