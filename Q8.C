@@ -14,51 +14,36 @@ Initial Array: [0, 1, 9, 0, 4, -5, 0]
 
 Expected Output: [1, 9, 4, -5, 0, 0, 0]
 */
+#include <iostream>
+#include <vector>
+using namespace std;
+vector<int>vec;
+int num;
 
-#include <stdio.h>
 
-
-void printer(int size,int *arr)
-{
-    printf("[ ");
-    for(int q=0;q<size;q++)
-    {
-        printf("%d, ",arr[q]);
-    }
-    printf("\b\b ]");
-}
-
-int size, arr[50],tmparr[50],non_zeroes = 0;
 int main()
 {
-printf("ENTER YOUR ARRAY SIZE ");
-scanf("%d",&size);
-printf("ENTER YOUR ARRAY ELEMENTS\n");
-for(int i = 0; i<size;i++)
+   cout<<"ENTER YOUR ARRAY SIZE ";
+   cin>>num;
+   cout<<"ENTER YOUR ARRAY HERE\n";
+   for(int i=0;i<num;i++)
+   {
+      int x;
+      cin>>x;
+      vec.push_back(x);
+   }
+   int end=0;
+for(int i=num-1;i>=0;i--)
 {
-    scanf("%d",&arr[i]);
-}
-int zeroes =size-1;
-int count1=0,count2=0;
-for(int j=0;j<size;j++)
-{
-    if(arr[j] == 0)
-    {
-        tmparr[zeroes] = arr[j];
-        zeroes--;
-        count1++;
-    }
-    else if(arr[j] != 0)
-    {
-        tmparr[non_zeroes]=arr[j];
-        non_zeroes++;
-        count2++;
-    }
    
+   if(vec[i]==0)
+   {
+      swap(vec[i],vec[num-1-end]);
+      end++;
+   }
 }
- int total = count1 + count2;
-    printer(total,tmparr);
-
-
-    return 0;
+for(int i=0;i<num;i++)
+{
+cout<<vec[i];
+}
 }

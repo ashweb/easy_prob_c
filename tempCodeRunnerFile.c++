@@ -1,48 +1,49 @@
+
 /*
 The Problem:
-Write a C program that takes an array of integers (size entered by the user) 
-and checks whether the array is a palindrome 
-If it's a palindrome, print "Palindrome".
-If it breaks symmetry anywhere, print "Not a Palindrome".
+Write a C program that takes an array of integers (size entered by the user), 
+which may contain a mix of numbers and zeros.
 
-Example 1:
-Array: [1, 2, 3, 2, 1]
-Expected Output: Palindrome
+Rearrange the elements in-place so that all zeros are pushed to the end of the array.
+
+The non-zero elements must keep their original relative order.
+
+Example:
+
+Initial Array: [0, 1, 9, 0, 4, -5, 0]
+
+Expected Output: [1, 9, 4, -5, 0, 0, 0]
 */
 #include <iostream>
 #include <vector>
-
 using namespace std;
 vector<int>vec;
 int num;
+
+
 int main()
 {
    cout<<"ENTER YOUR ARRAY SIZE ";
    cin>>num;
-   cout<<"ENTER YOUR ARRAY\n";
+   cout<<"ENTER YOUR ARRAY HERE\n";
    for(int i=0;i<num;i++)
    {
       int x;
       cin>>x;
       vec.push_back(x);
    }
-   int st=0;
-   int end=num-1;
-   int count=0;
-   while(st<end)//dont put equals else count wont be equal if num is odd
+   int end=0;
+for(int i=num-1;i>=0;i--)
+{
+   
+   if(vec[i]==0)
    {
-      if(vec[st]==vec[end])
-      {
-         count++;
-      }
-      st++;end--;
+      swap(vec[i],vec[num-1-end]);
+      end++;
    }
-   if(count == (num/2) )
-   {
-      cout<<"YOUR ARRAY IS A PALINDROME";
-   }
-   else
-   {
-      cout<<"ARRAY IS NOT A PALINDROME";
-   }
+}
+for(int i=0;i<num;i++)
+{
+cout<<vec[i];
+}
 }
