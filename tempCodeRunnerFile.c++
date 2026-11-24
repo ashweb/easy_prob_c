@@ -40,7 +40,11 @@ int size;
          seclarg = vec[i];
       }
    }
- 
+   if(seclarg == larg)
+{
+    cout<<"KINDLY GIVE DISTINCTIVE ARRAYS\n";
+    return 1;
+}
    
    cout<<"second largest : "<<seclarg<<endl<<"Largest : "<<larg;
 

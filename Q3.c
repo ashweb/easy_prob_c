@@ -5,56 +5,48 @@ Write a C program that takes an array of integers (size entered by the user)
 Example: If your array is [12, 35, 1, 10, 34, 1],
  the largest is 35 and the second largest is 34.
  */
-
- #include<stdio.h>
-
-
-
-
-int size,arr[50],larg,seclarg;
-int main()
+ #include <iostream>
+ #include <vector>
+ using namespace std;
+ vector<int>vec;
+int size;
+ int main()
+ {
+   cout<<"ENTER YOUR ARRAY SIZE ";
+   cin>>size;
+ if(size <=1)
+ {
+   cout<<"GIVE MORE THAN 1 NUMBER FOR COMPARISION";
+   return;
+ }
+   cout<<"ENTER YOUR ARRAY\n";
+   for(int i=0;i<size;i++)
+   {
+      int x;
+      cin>>x;
+      vec.push_back(x);
+   }
+   int larg=vec[0];
+   int seclarg=vec[0];
+   for(int i=0;i<size;i++)
+   {
+      if(vec[i]>=larg)
+      {
+         seclarg=larg;
+         larg = vec[i];
+      }
+      if(vec[i]>=seclarg && vec[i]<larg)
+      {
+         seclarg = vec[i];
+      }
+   }
+   if(seclarg == larg)
 {
-    here :
-printf("\nENTER SIZEOF ARRAY ");
-scanf("%d",&size);
-if(size <2)
-{
-    printf("----ENTER VALID SIZE------");
-    goto here;
-}
-printf("ENTER POSITIVE ARRAY ELEMENTS\n");
-for(int i = 0; i<size;i++)
-{
-    scanf("%d",&arr[i]);
-}
-larg = 0;
-seclarg = 0; 
-for(int y = 0; y<size;y++)
-{
-    if(arr[y]>larg)
-    {
-        seclarg = larg;
-        larg = arr[y];
-    }
-    else if(arr[y]>seclarg)
-    {
-        seclarg = arr[y];
-    }
-}
-if(seclarg == larg)
-{
-    printf("\nKINDLY GIVE DISTINCTIVE ARRAYS");
+    cout<<"KINDLY GIVE DISTINCTIVE ARRAYS\n";
     return 1;
 }
-
-printf("\nLARGEST NUMBER IS %d",larg);
-printf("\nSECOND LARGEST NUMBER IS %d",seclarg);
-
-    
+   
+   cout<<"second largest : "<<seclarg<<endl<<"Largest : "<<larg;
 
 
-
-
-
-    return 0;
-}
+ }
