@@ -1,52 +1,61 @@
 /*
-Write a C program that takes an array of integers (size entered by the user)
- and finds the second largest element in the array.
-
-Example: If your array is [12, 35, 1, 10, 34, 1],
- the largest is 35 and the second largest is 34.
- */
+The Problem:
+Write a C program that takes an array of integers (size entered by the user) 
+and checks whether the array is sorted in decreasing or increasing order.
+If any element breaks that rule, print "Not Sorted".
+*/
  #include <iostream>
  #include <vector>
  using namespace std;
  vector<int>vec;
-int size;
- int main()
- {
+ int num;
+int main()
+{
    cout<<"ENTER YOUR ARRAY SIZE ";
-   cin>>size;
- if(size <=1)
+   cin>>num;
+ if(num <=1)
  {
-   cout<<"GIVE MORE THAN 1 NUMBER FOR COMPARISION";
-   return;
+   cout<<"GIVE MORE THAN 1 NUMBER FOR ARRANGING";
+   return 1;
  }
    cout<<"ENTER YOUR ARRAY\n";
-   for(int i=0;i<size;i++)
+   for(int i=0;i<num;i++)
    {
       int x;
       cin>>x;
       vec.push_back(x);
    }
-   int larg=vec[0];
-   int seclarg=vec[0];
-   for(int i=0;i<size;i++)
-   {
-      if(vec[i]>=larg)
-      {
-         seclarg=larg;
-         larg = vec[i];
-      }
-      if(vec[i]>=seclarg && vec[i]<larg)
-      {
-         seclarg = vec[i];
-      }
-   }
-   if(seclarg == larg)
+int incr=0;
+int decr=0;
+for(int i=0;i<num-1;i++)
 {
-    cout<<"KINDLY GIVE DISTINCTIVE ARRAYS\n";
-    return 1;
+if(vec[i]>=vec[i+1])
+{
+   decr++;
 }
-   
-   cout<<"second largest : "<<seclarg<<endl<<"Largest : "<<larg;
+}
+for(int i=0;i<num-1;i++)
+{
+   if(vec[i]<=vec[i+1])
+   {
+      incr++;
+   }
+}
+if(incr == num-1)
+{
+   cout<<"ARRAY IS IN ASCENDING ORDER";
+}
+else if(decr == num-1)
+{
+   cout<<"ARRAY IS IN DECREASING ORDER";
+}
+else 
+{
+   cout<<"ARRAY IS NOT SORTED";
+}
 
 
- }
+return 0;
+
+
+}
