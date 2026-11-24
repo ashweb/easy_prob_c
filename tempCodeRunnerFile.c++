@@ -1,40 +1,48 @@
 /*
-The Problem:
-Write a C program that takes an array of integers and an integer K (entered by the user). 
-Rotate the elements of the array to the right by K positions.
+Write a C program that takes an array of integers (size entered by the user)
+ and finds the second largest element in the array.
 
-Example: If your array is [1, 2, 3, 4, 5] and K = 2, 
-shifting it to the right by 2 positions means the last two elements (4 and 5) 
-wrap around to the front, resulting in [4, 5, 1, 2, 3].
-
-*/
-#include <iostream>
-#include <algorithm>
-#include <vector>
-using namespace std;
-vector<int>vec;
-int k,size;
-int main()
-{
-   cout<<"ENTER YOUR ARRAY SIZE : ";
-    cin>>size;
-    cout<<"ENTER YOUR k : ";
-    cin>>k;
-    cout<<"ENTER YOUR ARRAY HERE\n";
+Example: If your array is [12, 35, 1, 10, 34, 1],
+ the largest is 35 and the second largest is 34.
+ */
+ #include <iostream>
+ #include <vector>
+ using namespace std;
+ vector<int>vec;
+int size;
+ int main()
+ {
+   cout<<"ENTER YOUR ARRAY SIZE ";
+   cin>>size;
+ if(size <=1)
+ {
+   cout<<"GIVE MORE THAN 1 NUMBER FOR COMPARISION";
+   return;
+ }
+   cout<<"ENTER YOUR ARRAY\n";
    for(int i=0;i<size;i++)
    {
-    int x;
-    cin>>x;
-    vec.push_back(x);
+      int x;
+      cin>>x;
+      vec.push_back(x);
    }
-   int i=0;
-   
-   rotate(vec.begin(),vec.begin() +size-k,vec.end());
-   
-   
-   cout<<"--------------";
-   for(int j=0;j<size;j++)
+   int larg=vec[0];
+   int seclarg=vec[0];
+   for(int i=0;i<size;i++)
    {
-    cout<<vec[j];
+      if(vec[i]>=larg)
+      {
+         seclarg=larg;
+         larg = vec[i];
+      }
+      if(vec[i]>=seclarg && vec[i]<larg)
+      {
+         seclarg = vec[i];
+      }
    }
-}
+ 
+   
+   cout<<"second largest : "<<seclarg<<endl<<"Largest : "<<larg;
+
+
+ }
