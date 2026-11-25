@@ -1,26 +1,16 @@
-
 /*
 The Problem:
-Write a C program that takes an array of integers (size entered by the user), 
-which may contain a mix of numbers and zeros.
+Write a C program that takes an array of integers (size entered by the user).
 
-Rearrange the elements in-place so that all zeros are pushed to the end of the array.
-
-The non-zero elements must keep their original relative order.
-
-Example:
-
-Initial Array: [0, 1, 9, 0, 4, -5, 0]
-
-Expected Output: [1, 9, 4, -5, 0, 0, 0]
+Count the occurrence (frequency) of each unique element in the array 
 */
 #include <iostream>
 #include <vector>
 using namespace std;
 vector<int>vec;
 int num;
-
-
+int count=0;
+int freq=0;
 int main()
 {
    cout<<"ENTER YOUR ARRAY SIZE ";
@@ -32,18 +22,29 @@ int main()
       cin>>x;
       vec.push_back(x);
    }
-   int end=0;
-for(int i=num-1;i>=0;i--)
-{
-   
-   if(vec[i]==0)
-   {
-      swap(vec[i],vec[num-1-end]);
-      end++;
+   for(int i=0;i<num;i++)
+   {count=0;
+      for(int j=0; j<num;j++)
+      {
+         if(j==i)
+         {
+            continue;
+         }
+         if(vec[j]==vec[i])
+         {
+            count=0;
+            break;
+         }
+         if(vec[i] != vec[j])
+         {
+            count++;
+         }
+      }
+      if(count >0)
+      {
+         cout<<"\nYOUR UNIQUE ELEMENT IS : "<<vec[i];
+         freq++;
+      }
    }
-}
-for(int i=0;i<num;i++)
-{
-cout<<vec[i];
-}
+   cout<<"\nTOTAL FREQUENCY OF ALL UNIQUE ELEMENT : "<<freq;
 }
