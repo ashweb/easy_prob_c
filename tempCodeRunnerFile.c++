@@ -1,14 +1,12 @@
-/*
-THE PROBLEM :
-CALCULATE TOTAL SUBARRAY INSIDE ARRAY ENTERED BY INPUT AND PRINT ALL THOSE ARRAY
-*/
+//THE PROGRAM-
+//TO FIND THE SUM OF MAXIMUM SUB ARRAY IN A GIVEN ARRAY/ OR INPUTTED ARRAY - USE VECTORS
+
 
 #include <iostream>
 #include <vector>
 using namespace std;
 vector<int>vec;
-int num=0;
-int test=0;
+int num;
 
 int main()
 {
@@ -29,24 +27,17 @@ int main()
       vec.push_back(x);
    }
 //-----------------------------------------------------------------------
-for(int start =0;start<num;start++)
+//FINDING SUM OF MAXIMUM SUBARRAY USING ---KADANE'S ALGORITHM----
+int curr_sum=0;
+int max_sum=0;
+for(int i=0;i<num;i++)
 {
-   for(int end =0;end<num;end++)
+   curr_sum += vec[i];
+   if(curr_sum <0)
    {
-      if(end<start)
-      {
-         cout<<"   ";
-         continue;
-      }
-      cout<<"[ ";
-      for(int ptr =start;ptr<=end;ptr++)
-      {
-         cout<<vec[ptr];
-      }
-      cout<<" ]";
+      curr_sum=0;
    }
-   cout<<endl;
+   max_sum = max(curr_sum,max_sum);
 }
-return 0;
-
+cout<<"SUM OF MAXIMUM SUBARRAY : "<<max_sum;
 }

@@ -1,57 +1,69 @@
-/*
-THE PROBLEM;
-TAKE SET OF NUMBERS AS INPUT FROM THE USER AND CHECK IF ANY NUMBER IN NON REPEATED IF THERE 
-IS ANY NUMBER NON REPEATED PRINT THAT IN PROPER WAY
-USING BITWISE XOR LOGIC WE KNOW -:
-0^0 - 0
-1^0 - 1
-0^1 - 1
-1^1 - 0
-Rule of thumb: same bits give 0, different bits give 1
-
-N^0 - UNCHANGED(N XOR WITH 0 UNCHANGED)
-N^0 - CHANGED(N XOR WITH 1 CHANGED)
-
-*/
+//THE PROGRAM-
+//TO FIND THE SUM OF MAXIMUM SUB ARRAY IN A GIVEN ARRAY/ OR INPUTTED ARRAY - USE VECTORS
 
 #include <iostream>
 #include <vector>
+
 using namespace std;
-vector<int>arr;
-int num=0;
-int test=0;
 
 int main()
 {
-   here1:
-    cout<<"ENTER YOUR ARRAY SIZE ";
-   cin>>num;
-   if(num<2)
-   {
-    cout<<"ENTER MORE THAN 1 NUMBER TO CONTINUE\n";
-    goto here1;
-   }
-   
-   cout<<"ENTER YOUR ARRAY HERE\n";
-   for(int i=0;i<num;i++)
-   {
-      int x;
-      cin>>x;
-      arr.push_back(x);
-   }
-//-----------------------------------------------------------------------
-for(int y=0;y<num;y++)
-        {
-          test = test^arr[y];
-        }
-         if(test != 0)
-        {
-           cout<<"UNIQUE ELEMENT IS "<<test; 
-        }
-        else
-        {
-           cout<<"NO UNIQUE NUMBER IN YOUR ARRAY";
-        }
-return 0;
+    
+     vector<int>vec = {-2,1,-3,4,-1,2,1,-5,4};
+    int size = vec.size();
+    
 
+    for(int st = 0; st<size; st++)
+        {
+            for(int end = st; end<size; end++)
+
+                {
+                    for(int i = st; i<=end; i++)
+
+                        {
+                            cout<<vec.at(i)<<",";
+                        }
+                    cout<<"   ";
+                }
+            cout<<endl;
+        }
+
+ cout<<"\n"<<"\n-----MAXIMUM SUBARRAY----\n";
+    
+int curr_sum = 0;
+int maxsum = vec.at(0);
+
+
+    for(int st = 0; st<size; st++)
+        {
+            curr_sum = 0;
+            for(int end = st; end<size; end++)
+
+                {
+                    curr_sum += vec.at(end);
+                   maxsum  = max(curr_sum,maxsum);
+                }
+            
+            
+            cout<<endl;
+        }
+
+    cout<<maxsum;
+    cout<<"\n-----VIA KADANE'S ALGORITHM------\n";
+int curr_Sum = vec[0];
+ maxsum = vec.at(0);
+     for(int st = 0; st<size; st++)
+         {
+             curr_Sum += vec.at(st);
+             if(curr_Sum < 0)
+             {
+                 curr_Sum = 0;
+             }
+             maxsum = max(curr_Sum,maxsum);
+         }
+    cout<<"\n"<<maxsum;
+
+
+
+    
 }
