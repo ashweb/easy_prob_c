@@ -1,23 +1,12 @@
 /*
-THE PROBLEM;
-TAKE SET OF NUMBERS AS INPUT FROM THE USER AND CHECK IF ANY NUMBER IN NON REPEATED IF THERE 
-IS ANY NUMBER NON REPEATED PRINT THAT IN PROPER WAY
-USING BITWISE XOR LOGIC WE KNOW -:
-0^0 - 0
-1^0 - 1
-0^1 - 1
-1^1 - 0
-Rule of thumb: same bits give 0, different bits give 1
-
-N^0 - UNCHANGED(N XOR WITH 0 UNCHANGED)
-N^0 - CHANGED(N XOR WITH 1 CHANGED)
-
+THE PROBLEM :
+CALCULATE TOTAL SUBARRAY INSIDE ARRAY ENTERED BY INPUT AND PRINT ALL THOSE ARRAY
 */
 
 #include <iostream>
 #include <vector>
 using namespace std;
-vector<int>arr;
+vector<int>vec;
 int num=0;
 int test=0;
 
@@ -37,21 +26,27 @@ int main()
    {
       int x;
       cin>>x;
-      arr.push_back(x);
+      vec.push_back(x);
    }
 //-----------------------------------------------------------------------
-for(int y=0;y<num;y++)
-        {
-          test = test^arr[y];
-        }
-         if(test != 0)
-        {
-           cout<<"UNIQUE ELEMENT IS "<<test; 
-        }
-        else
-        {
-           cout<<"NO UNIQUE NUMBER IN YOUR ARRAY";
-        }
+for(int start =0;start<num;start++)
+{
+   for(int end =0;end<num;end++)
+   {
+      if(end<start)
+      {
+         cout<<"   ";
+         continue;
+      }
+      cout<<"[ ";
+      for(int ptr =start;ptr<=end;ptr++)
+      {
+         cout<<vec[ptr];
+      }
+      cout<<" ]";
+   }
+   cout<<endl;
+}
 return 0;
 
 }
