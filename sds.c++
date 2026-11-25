@@ -1,17 +1,25 @@
-//manipulating an array
 /*
-TAKE AN ARRAY INPUT FROM USER AND SEPERATE ALL EVEN AS WELL ODD NUMBERS 
-INTO EACH DIFFERENT TEMP ARRAY AND PRINT THOSE ARRAY
+THE PROBLEM;
+TAKE SET OF NUMBERS AS INPUT FROM THE USER AND CHECK IF ANY NUMBER IN NON REPEATED IF THERE 
+IS ANY NUMBER NON REPEATED PRINT THAT IN PROPER WAY
+USING BITWISE XOR LOGIC WE KNOW -:
+0^0 - 0
+1^0 - 1
+0^1 - 1
+1^1 - 0
+Rule of thumb: same bits give 0, different bits give 1
+
+N^0 - UNCHANGED(N XOR WITH 0 UNCHANGED)
+N^0 - CHANGED(N XOR WITH 1 CHANGED)
+
 */
 
 #include <iostream>
 #include <vector>
 using namespace std;
-vector<int>vec;
-vector<int>even;
-vector<int>odd;
-void printer(int num,vector<int>&vec);
+vector<int>arr;
 int num=0;
+int test=0;
 
 int main()
 {
@@ -29,33 +37,21 @@ int main()
    {
       int x;
       cin>>x;
-      vec.push_back(x);
+      arr.push_back(x);
    }
 //-----------------------------------------------------------------------
-for(int i=0;i<num;i++)
-{
-   if(vec[i] %2 ==0)
-   {
-      even.push_back(vec[i]);
-   }
-   else if(vec[i] %2 !=0)
-   {
-       odd.push_back(vec[i]);
-   }
-}
-cout<<"\nEVEN :\n";
-printer(even.size(),even);
-cout<<"\nODD :\n";
-printer(odd.size(),odd);
-}
+for(int y=0;y<num;y++)
+        {
+          test = test^arr[y];
+        }
+         if(test != 0)
+        {
+           cout<<"UNIQUE ELEMENT IS "<<test; 
+        }
+        else
+        {
+           cout<<"NO UNIQUE NUMBER IN YOUR ARRAY";
+        }
+return 0;
 
-
-void printer(int size_taken,vector<int>&even_odd)
-{
-   cout<<"[ ";
-   for(int i=0 ;i <size_taken;i++)
-   {
-      cout<<even_odd[i]<<" ";
-   }
-   cout<<" ]";
 }
