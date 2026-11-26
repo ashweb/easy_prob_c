@@ -1,12 +1,19 @@
-//THE PROGRAM-
-//TO FIND THE SUM OF MAXIMUM SUB ARRAY IN A GIVEN ARRAY/ OR INPUTTED ARRAY - USE VECTORS
-
+/*
+THE PROBLEM;
+GIVEN ARRAR\VECTOR ITS PAIR OF DIGIT EQUALS TO TARGET, DISPLAY ALL THOSE PAIR CLEANLY;
+non repetetive-
+eg: [3,4,1,5,6,2] target = 7 then
+[3,4]
+[6,1]
+[5,2]
+*/
 
 #include <iostream>
 #include <vector>
 using namespace std;
 vector<int>vec;
 int num;
+int target;
 
 int main()
 {
@@ -18,6 +25,8 @@ int main()
     cout<<"ENTER MORE THAN 1 NUMBER TO CONTINUE\n";
     goto here1;
    }
+   cout<<"ENTER YOUR TARGET NUMBER: ";
+   cin>>target;
    
    cout<<"ENTER YOUR ARRAY HERE\n";
    for(int i=0;i<num;i++)
@@ -27,17 +36,22 @@ int main()
       vec.push_back(x);
    }
 //-----------------------------------------------------------------------
-//FINDING SUM OF MAXIMUM SUBARRAY USING ---KADANE'S ALGORITHM----
-int curr_sum=0;
-int max_sum=0;
+cout<<"PAIR'S ARE -: \n";
 for(int i=0;i<num;i++)
 {
-   curr_sum += vec[i];
-   if(curr_sum <0)
+for(int j=i+1;j<num;j++)
+{
+   
+   if(i==j)
    {
-      curr_sum=0;
+      continue;
    }
-   max_sum = max(curr_sum,max_sum);
+   if(vec[i]+vec[j] == target)
+   {
+      cout<<"[ "<<vec[i]<<","<<vec[j]<<" ]"<<endl;
+   }
 }
-cout<<"SUM OF MAXIMUM SUBARRAY : "<<max_sum;
+}
+
+
 }

@@ -1,5 +1,7 @@
 //THE PROGRAM-
 //TO FIND THE SUM OF MAXIMUM SUB ARRAY IN A GIVEN ARRAY/ OR INPUTTED ARRAY - USE VECTORS
+//hint : use kadane's algorithm
+//eg [3,4,-6,-2,4,8] - max subarray is 12
 
 
 #include <iostream>
