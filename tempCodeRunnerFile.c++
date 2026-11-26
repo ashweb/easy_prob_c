@@ -1,10 +1,13 @@
 /*
 THE PROBLEM
-TO FIND THE UNIQUE PAIR IN GIVEN SORTED ARRAY\VECTOR USING THE MOST OPTIMISED METHOD in O(N) time and space
-NOTE: There is single pair in array which is equal to target;
-eg: [1,2,4,6] target : 7
-pair - [1,6]
-hint : using two pointer's method
+FIND THE MOST FREQUENT NUMBER IN AN ARRAY WHOSE FREQUENCY SHOULD BE GREATER THAN HALF THE SIZE OF AN ARRAY
+EG   : {1, 1, 1, 2, 2, 2,1}              - ANS IS 1 (ITS THE MOST FREQUENT) 
+HINT : USE SORTING THEN FIND             - SLIGHTLY LESS OPTIMISED
+HINT : USE MVA(MOORE'S VOTING ALRORITHM) - MOST OPTIMISED- (WORKS ON UNSORTED ARRAY)
+--------------------------------------------------------------------------------------
+DRAWBACK OF MVA - MVA WORKS OR GIVES CORRECT ANSWER ONLY IF SOME ELEMENT DOES APPEAR MORE THAN
+HALF THE NUMBER OF ELEMENTS IN ARRAY ELSE IT GIVES WRONG ANS SO ALWAYS CHECK BY APPLYING LAST
+SINGLE FOR LOOP IF THAT PERTICULAR ELEMENT DOES OCCUR MORE THAN REQUIRED
 */
 
 #include <iostream>
@@ -12,20 +15,18 @@ hint : using two pointer's method
 using namespace std;
 vector<int>vec;
 int num=0;
-int target=0;
+
 
 int main()
 {
    here1:
-    cout<<"ENTER YOUR ARRAY SIZE ";
+   cout<<"ENTER YOUR ARRAY SIZE ";
    cin>>num;
    if(num<2)
    {
     cout<<"ENTER MORE THAN 1 NUMBER TO CONTINUE\n";
     goto here1;
    }
-   cout<<"ENTER YOUR TARGET NUMBER: ";
-   cin>>target;
    
    cout<<"ENTER YOUR ARRAY HERE\n";
    for(int i=0;i<num;i++)
@@ -35,23 +36,35 @@ int main()
       vec.push_back(x);
    }
 //-----------------------------------------------------------------------
-int ptr_1 = 0;
-int ptr_2 = num-1;
-while(ptr_1<ptr_2)
+//METHOD -1 #
+//MOORE'S VOTING ALGORITHM
+int freq =0;
+int ans =0;
+for(int i=0;i<num;i++)
 {
-   if(vec[ptr_1]+vec[ptr_2]>target)
-   {
-      ptr_2--;
-   }
-  else if(vec[ptr_1]+vec[ptr_2]<target)
-   {
-      ptr_1++;
-   }
-   else if(vec[ptr_1]+vec[ptr_2]==target)
-   {
-      cout<<"[ "<<vec[ptr_1]<<","<<vec[ptr_2]<<" ]"<<endl;
-      break;
-   }
+   if(freq ==0)
+            {
+               ans = vec[i];
+            }
+          vec[i]==ans?freq++ : freq--;
 }
+//checking if answer is correct
+int count =0;
+     for(int i=0;i<num;i++)
+      {
+                 if(vec[i]==ans)
+                         {
+                            count++;
+                         }
+      }
+  if(count<=num/2)
+      {
+         cout<<"NO MAJORITY";
+         return 1;
+      }
+             cout<<"\nANS IS "<<ans;
 }
+//METHOD 2 -:
+//SORTING TO FIND THE MAJORITY
+
 
