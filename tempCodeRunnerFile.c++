@@ -1,19 +1,18 @@
 /*
-THE PROBLEM;
-GIVEN ARRAR\VECTOR ITS PAIR OF DIGIT EQUALS TO TARGET, DISPLAY ALL THOSE PAIR CLEANLY;
-non repetetive-
-eg: [3,4,1,5,6,2] target = 7 then
-[3,4]
-[6,1]
-[5,2]
+THE PROBLEM
+TO FIND THE UNIQUE PAIR IN GIVEN SORTED ARRAY\VECTOR USING THE MOST OPTIMISED METHOD in O(N) time and space
+NOTE: There is single pair in array which is equal to target;
+eg: [1,2,4,6] target : 7
+pair - [1,6]
+hint : using two pointer's method
 */
 
 #include <iostream>
 #include <vector>
 using namespace std;
 vector<int>vec;
-int num;
-int target;
+int num=0;
+int target=0;
 
 int main()
 {
@@ -36,22 +35,23 @@ int main()
       vec.push_back(x);
    }
 //-----------------------------------------------------------------------
-cout<<"PAIR'S ARE -: \n";
-for(int i=0;i<num;i++)
+int ptr_1 = 0;
+int ptr_2 = num-1;
+while(ptr_1<ptr_2)
 {
-for(int j=i+1;j<num;j++)
-{
-   
-   if(i==j)
+   if(vec[ptr_1]+vec[ptr_2]>target)
    {
-      continue;
+      ptr_2--;
    }
-   if(vec[i]+vec[j] == target)
+  else if(vec[ptr_1]+vec[ptr_2]<target)
    {
-      cout<<"[ "<<vec[i]<<","<<vec[j]<<" ]"<<endl;
+      ptr_1++;
+   }
+   else if(vec[ptr_1]+vec[ptr_2]==target)
+   {
+      cout<<"[ "<<vec[ptr_1]<<","<<vec[ptr_2]<<" ]"<<endl;
+      break;
    }
 }
 }
 
-
-}
