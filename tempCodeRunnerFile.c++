@@ -1,15 +1,18 @@
-/*
-THE PROBLEM
-FIND THE MOST FREQUENT NUMBER IN AN ARRAY WHOSE FREQUENCY SHOULD BE GREATER THAN HALF THE SIZE OF AN ARRAY
-EG   : {1, 1, 1, 2, 2, 2,1}              - ANS IS 1 (ITS THE MOST FREQUENT) 
-HINT : USE SORTING THEN FIND             - SLIGHTLY LESS OPTIMISED
-HINT : USE MVA(MOORE'S VOTING ALRORITHM) - MOST OPTIMISED- (WORKS ON UNSORTED ARRAY)
---------------------------------------------------------------------------------------
-DRAWBACK OF MVA - MVA WORKS OR GIVES CORRECT ANSWER ONLY IF SOME ELEMENT DOES APPEAR MORE THAN
-HALF THE NUMBER OF ELEMENTS IN ARRAY ELSE IT GIVES WRONG ANS SO ALWAYS CHECK BY APPLYING LAST
-SINGLE FOR LOOP IF THAT PERTICULAR ELEMENT DOES OCCUR MORE THAN REQUIRED
-*/
+/*THE PROBLEM -:
+You are given an array prices where prices[i] is the price of a given stock on the ith day.
 
+You want to maximize your profit by choosing a single day to buy one stock 
+and choosing a different day in the future to sell that stock.
+
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+
+Example 1:
+
+Input: prices = [7,1,5,3,6,4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+*/
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -36,35 +39,17 @@ int main()
       vec.push_back(x);
    }
 //-----------------------------------------------------------------------
-//METHOD -1 #
-//MOORE'S VOTING ALGORITHM
-int freq =0;
-int ans =0;
+int best_buy = vec[0];
+int max_profit = 0;
 for(int i=0;i<num;i++)
 {
-   if(freq ==0)
-            {
-               ans = vec[i];
-            }
-          vec[i]==ans?freq++ : freq--;
+   if(vec[i]>best_buy)
+   {
+      max_profit = max(max_profit,vec[i]-best_buy);
+   }
+   best_buy = min(best_buy,vec[i]);
 }
-//checking if answer is correct
-int count =0;
-     for(int i=0;i<num;i++)
-      {
-                 if(vec[i]==ans)
-                         {
-                            count++;
-                         }
-      }
-  if(count<=num/2)
-      {
-         cout<<"NO MAJORITY";
-         return 1;
-      }
-             cout<<"\nANS IS "<<ans;
+cout<<"\nMAX PROFIT IS "<<max_profit;
+        cout<<"\nBEST BUY IS "<<best_buy;
+
 }
-//METHOD 2 -:
-//SORTING TO FIND THE MAJORITY
-
-
