@@ -1,102 +1,55 @@
 /*
-THE PROBLEM
-FIND THE MOST FREQUENT NUMBER IN AN ARRAY WHOSE FREQUENCY SHOULD BE GREATER THAN HALF THE SIZE OF AN ARRAY
-EG:  {1, 1, 1, 2, 2, 2,1};- ANS IS 1 (ITS THE MOST FREQUENT)
-HINT : USE SORTING - SLIGHTLY LESS OPTIMISED
-HINT : USE MVA(MOORE'S VOTING ALRORITHM) - MOST OPTIMISED
+THE PROBLEM -:
+Implement pow(x, n), which calculates x raised to the power n (i.e., xn).
+
+ Example 1:
+
+Input: x = 2.00000, n = 10
+Output: 1024.00000
+-------------------------------------EXPLAINATION--------------------------------------------
+
+WE KNOW TOTAL NUMBER OF DIGITS IN BINARY FORM OF ANY NUMBER IS LOG2N + 1 FOR EXAMPLE 10 = 1000(log10base2=3+1=4)
+
+SIMILARLY ALSO NOTE: NEVER GO BEYOND THE 10^8 NUMBER OF OPERATIONS FOR EG HERE 
+CALCULATION OF 10^31 WONT HAPPEN VIA ORIDINARY FOR LOOP WITH DECIMAL NUMBERS INSTEAD CONVERT IT INTO 
+BINARY AND THEN NUMBER OF OPERATION BECOMES LOG2N +1
 */
 
 #include <iostream>
-#include <vector>
 using namespace std;
+double pow(long n, double a);
 int main()
 {
-  vector<int> vec = {1, 1, 1, 2, 2, 2,1};
-int n = vec.size();
-    int count =0;
-    int maj=0;
 
-cout<<"\n\n-----BRUTE FORCE METHOD-O(n^2)------\n";
-    for(int i = 0; i<n; i++)
-        {
-            count =0;
-            for(int j=i;j<n;j++)
-                {
-                    if(vec.at(i)==vec.at(j))
-                    {
-                        count++;
-                    }
-                }
-            
-            if(count > n/2)
-            {
-                 maj = vec.at(i);
-                break;
-            }
-            
-        }
-    cout<<maj;
-    cout<<"\n\n--------SORTING AND FINDING-O(nlogn)+O(n) = O(nlogn)--------\n";
-//METHOD 2
-    // SORTING
+double binform_of_power;
+double base;
 
-    for(int i =0; i<n; i++)
-        {
-        for(int j=i;j<n;j++)
-            {
-            if(vec.at(i)>vec.at(j))
-            {
-        int temp = vec.at(i);
-         vec.at(i) = vec.at(j);
-         vec.at(j) = temp;
-            }
-            
-            }
-        }
-   
-    cout<<"\n";
-   
-     cout<<"\n";
-     
-         count = 0;  
-      for(int i = 0; i<n-1;i++)
-          {
-              
-         if(vec.at(i) == vec.at(i+1))
-         {
-             count++;
-             
-         }
-              if(count > n/2-1)
-              {
-                  cout<<"\n"<<vec.at(i);
-                  break;
-              }
-         if(vec.at(i) != vec.at(i+1))
-        {
-            count = 0;
-        }
-             
-          }
-    //MOORE'S ALGORITHM-:
-     cout<<"\n\n------------MOORE'S VOTING ALGORITHM-O(n)------------\n";
-int freq=0,ans=0;
-    for(int i = 0; i< n; i++)
-        {
-            if(freq == 0)
-            {
-                ans = vec.at(i);
-            }
-            
-            if(ans == vec.at(i))
-            {
-                freq++;            
-            }else{
-              freq--;
-            }
+    cout<<"ENTER BASE ";
+       cin>>base;
+    cout<<"ENTER POWER ";
+           cin>>binform_of_power;
+    
+    
+ double ans = pow(binform_of_power,base);
+ cout<<"POWER OF X^N IS : "<<ans;
+    return 0;
 }
+double pow(long n, double a)
+{
+double ans=1;
+while(n>0)
 
-cout<<"\n"<<ans;
+    if(n%2 == 1)
+    {
+        ans *= a;
+    }
+    a *= a;
+    n/=2;
+
+}
+return ans;
+
+}
 
     
-}
+
