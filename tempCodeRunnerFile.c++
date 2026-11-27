@@ -1,17 +1,9 @@
 /*THE PROBLEM -:
-You are given an array prices where prices[i] is the price of a given stock on the ith day.
-
-You want to maximize your profit by choosing a single day to buy one stock 
-and choosing a different day in the future to sell that stock.
-
-Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
-
-Example 1:
-
-Input: prices = [7,1,5,3,6,4]
-Output: 5
-Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
-Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+FIND THE MAX AREA THE ARRAY OF BUCKET KINDA CAN CONTAIN
+EG: Input: height = [1,8,6,2,5,4,8,3,7]
+    Output: 49
+Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, 
+the max area of water (blue section) the container can contain is 49.
 */
 #include <iostream>
 #include <vector>
@@ -38,18 +30,17 @@ int main()
       cin>>x;
       vec.push_back(x);
    }
-//-----------------------------------------------------------------------
-int best_buy = vec[0];
-int max_profit = 0;
-for(int i=0;i<num;i++)
+//----------------------TWO POINTER'S APPROACH-------------------------------------------
+int left_ptr = 0;
+int right_ptr =num-1;
+int maxwater =0; 
+while(left_ptr<right_ptr)
 {
-   if(vec[i]>best_buy)
-   {
-      max_profit = max(max_profit,vec[i]-best_buy);
-   }
-   best_buy = min(best_buy,vec[i]);
+   //if vec[left_ptr] = vec[right_ptr] then min value returns first argument ans area still comes satisfied
+   int base = right_ptr-left_ptr;
+   int area = min(vec[left_ptr],vec[right_ptr])*base;
+   maxwater = max(maxwater,area);
+   vec[left_ptr]<=vec[right_ptr] ? left_ptr++ : right_ptr--;
 }
-cout<<"\nMAX PROFIT IS "<<max_profit;
-        cout<<"\nBEST BUY IS "<<best_buy;
-
+cout<<"\nMAX AREA OF WATER IS : "<<maxwater;
 }
